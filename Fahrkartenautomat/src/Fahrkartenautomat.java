@@ -5,6 +5,7 @@ import java.util.Scanner;
  * MTS 32
  * A2.6 Fahrkartenautomat kommentieren
  * A3.3: Ausgabe des Fahrkartenautomaten anpassen 
+ * A3.2 Anzahl der Tickets hinzufügen 
  */
 
 class Fahrkartenautomat {
@@ -17,10 +18,18 @@ class Fahrkartenautomat {
 		double eingeworfeneMuenze;
 		double rueckgabebetrag;
 		double nochZuZahlen;
+		int anzahlTickets;
 
 		// Geldbetrag eingeben
 		System.out.print("Zu zahlender Betrag (Euro): ");
 		zuZahlenderBetrag = tastatur.nextDouble();
+		
+		// Anzahl Tickets eingeben
+		System.out.print("Ticketanzahl: ");
+		anzahlTickets = tastatur.nextInt();
+		
+		// Ticketanzahl mal Ticketpreis
+		zuZahlenderBetrag *= anzahlTickets;  
 
 		// Geldeinwurf
 		eingezahlterGesamtbetrag = 0.0;
