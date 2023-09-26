@@ -8,6 +8,7 @@ import java.util.Scanner;
  * A3.2 Anzahl der Tickets hinzufügen 
  * A4.1 PQ-Fomel
  * A4.1 Tageszeit
+ * A4.1 Schaltjahr
  */
 
 class Fahrkartenautomat {
