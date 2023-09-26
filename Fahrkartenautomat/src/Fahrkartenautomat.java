@@ -6,6 +6,8 @@ import java.util.Scanner;
  * A2.6 Fahrkartenautomat kommentieren
  * A3.3: Ausgabe des Fahrkartenautomaten anpassen 
  * A3.2 Anzahl der Tickets hinzufügen 
+ * A4.1 PQ-Fomel
+ * A4.1 Tageszeit
  */
 
 class Fahrkartenautomat {
