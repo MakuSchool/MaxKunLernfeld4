@@ -24,12 +24,24 @@ class Fahrkartenautomat {
 		int anzahlTickets;
 
 		// Geldbetrag eingeben
+		// Testen auf korrekten Wert
 		System.out.print("Zu zahlender Betrag (Euro): ");
 		zuZahlenderBetrag = tastatur.nextDouble();
 		
+		if(zuZahlenderBetrag < 0){
+			System.out.println("Fehlerhafte Eingabe: Der Ticketpreis muss positiv sein!\nTicketprei wird auf 1€ gesetzt");
+			zuZahlenderBetrag = 1;
+		}
+		
 		// Anzahl Tickets eingeben
+		// Testen auf korrekten Wert
 		System.out.print("Ticketanzahl: ");
 		anzahlTickets = tastatur.nextInt();
+		
+		if(anzahlTickets <= 0 || anzahlTickets > 10){
+			System.out.println("Fehlerhafte Eingabe: Die anzahl Tickets ist negativ oder größer 10!\nTicketanzahl wird auf 1 gesetzt");
+			zuZahlenderBetrag = 1;
+		}
 		
 		// Ticketanzahl mal Ticketpreis
 		zuZahlenderBetrag *= anzahlTickets;  
