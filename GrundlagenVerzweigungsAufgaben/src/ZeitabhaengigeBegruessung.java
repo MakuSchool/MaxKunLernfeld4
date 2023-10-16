@@ -8,6 +8,9 @@ public class ZeitabhaengigeBegruessung {
 		Calendar kalender = Calendar.getInstance();
         int stunde = kalender.get(Calendar.HOUR_OF_DAY);
         
+        //Mehrfach-case
+        //case 22, 23, 0, 1, 2,3,4 -> System.out.println("Gute Nacht")
+        
         //Begrüßungs Switch
         switch(stunde) {
         case 0:
