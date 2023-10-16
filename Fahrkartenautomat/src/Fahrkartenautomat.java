@@ -9,6 +9,9 @@ import java.util.Scanner;
  * A4.1 PQ-Fomel
  * A4.1 Tageszeit
  * A4.1 Schaltjahr
+ * A4.2: Ticketgrenzen im Fahrkartenautomat implementieren
+ * A4.3: Geldeingabe überprüfen
+ * A5.1: Schleifen
  */
 
 class Fahrkartenautomat {
