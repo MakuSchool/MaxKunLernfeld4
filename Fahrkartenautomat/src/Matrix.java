@@ -19,23 +19,24 @@ public class Matrix {
 			for(int j = 1; j <= 10; j++) {
 				//Zahl enthaelt Ziffer
 				if(String.valueOf(k).contains(String.valueOf(ziffer))) {
-					System.out.print("* ");
+					System.out.printf( "%s\t", "*");
 					k++;
 					continue;
 				}
 				//Zahl ist durch ziffer teilbar
 				if(k % ziffer == 0) {
-					System.out.print("* ");
+					System.out.printf( "%s\t", "*");
 					k++;
 					continue;
 				}
 				//Quersumme ist Ziffer
 				if(k % 10 + (k/10) % 10 == ziffer) {
-					System.out.print("* ");
+					System.out.printf( "%s\t", "*");
 					k++;
 					continue;
 				}
-				System.out.print(k + " ");
+				//System.out.print(k + " ");
+				System.out.printf( "%s\t", k );
 				k++;
 			}
 			System.out.println("\n");
