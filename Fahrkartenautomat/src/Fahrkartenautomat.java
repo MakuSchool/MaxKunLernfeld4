@@ -17,6 +17,7 @@ import java.util.Scanner;
  */
 
 class Fahrkartenautomat {
+	
 	public static void main(String[] args) {
 
 		Scanner tastatur = new Scanner(System.in);
@@ -146,3 +147,4 @@ class Fahrkartenautomat {
 		return rueckgabeWert;
 	}
 }
+
