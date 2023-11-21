@@ -4,7 +4,12 @@ public class A624_Urlaub {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		System.out.println(umrechnen(input, "Daenemark"));
+		String land = "";
+		while(land != "stop") {
+			System.out.println("Gebe das Land an, stop wenn schluss");
+			land = input.next();
+			System.out.println(umrechnen(input, land));
+		}
 	}
 	
 	public static double umrechnen(Scanner input, String country) {
