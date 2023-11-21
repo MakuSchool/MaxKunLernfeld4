@@ -13,6 +13,7 @@ import java.util.Scanner;
  * A4.3: Geldeingabe überprüfen
  * A5.1: Schleifen
  * A6.3: Methoden
+ * A6.4: Zusatzschleife
  */
 
 class Fahrkartenautomat {
@@ -118,34 +119,30 @@ class Fahrkartenautomat {
 			System.out.printf("Der Rückgabebetrag in Höhe von %.2f Euro\n", rueckgabebetrag);
 			System.out.println("wird in folgenden Münzen ausgezahlt:");
 
-			while (rueckgabebetrag >= 2.0) { // 2-Euro-Münzen
-				System.out.println("2 Euro");
-				rueckgabebetrag = rueckgabebetrag - 2.0;
-			}
-			while (rueckgabebetrag >= 1.0) { // 1-Euro-Münzen
-				System.out.println("1 Euro");
-				rueckgabebetrag = rueckgabebetrag - 1.0;
-			}
-			while (rueckgabebetrag >= 0.5) { // 50-Cent-Münzen
-				System.out.println("50 Cent");
-				rueckgabebetrag = rueckgabebetrag - 0.5;
-			}
-			while (rueckgabebetrag >= 0.2) { // 20-Cent-Münzen
-				System.out.println("20 Cent");
-				rueckgabebetrag = rueckgabebetrag - 0.2;
-			}
-			while (rueckgabebetrag >= 0.1) { // 10-Cent-Münzen
-				System.out.println("10 Cent");
-				rueckgabebetrag = rueckgabebetrag - 0.1;
-			}
-			while (rueckgabebetrag >= 0.05) { // 5-Cent-Münzen
-				System.out.println("5 Cent");
-				rueckgabebetrag = rueckgabebetrag - 0.05;
-			}
+			//2 Euro
+			rueckgabebetrag = muenzRueckgabe(rueckgabebetrag, 2.0, "2 Euro");
+			//1 Euro
+			rueckgabebetrag = muenzRueckgabe(rueckgabebetrag, 1.0, "1 Euro");
+			//50 Cent
+			rueckgabebetrag = muenzRueckgabe(rueckgabebetrag, 0.5, "50 Cent");
+			//20 Cent
+			rueckgabebetrag = muenzRueckgabe(rueckgabebetrag, 0.2, "20 Cent");
+			//10 Cent
+			rueckgabebetrag = muenzRueckgabe(rueckgabebetrag, 0.1, "10 Cent");
+			//5 Cent
+			rueckgabebetrag = muenzRueckgabe(rueckgabebetrag, 0.05, "5 Cent");
 		}
 
 		System.out.println("\nVergessen Sie nicht, den Fahrschein\n" + "vor Fahrtantritt entwerten zu lassen!\n"
 				+ "Wir wünschen Ihnen eine gute Fahrt.");
 
+	}
+	
+	public static double muenzRueckgabe(double rueckgabeWert, double muenzWert, String muenze) {
+		while (rueckgabeWert >= muenzWert) {
+			System.out.println(muenze);
+			rueckgabeWert = rueckgabeWert - muenzWert;
+		}
+		return rueckgabeWert;
 	}
 }
