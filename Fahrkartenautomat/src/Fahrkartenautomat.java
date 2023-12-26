@@ -6,6 +6,7 @@ import java.util.Scanner;
  * A2.6 Fahrkartenautomat kommentieren
  * A3.3: Ausgabe des Fahrkartenautomaten anpassen 
  * A3.2 Anzahl der Tickets hinzufügen 
+ * A3.3 Fehlerbeseitigung 
  * A4.1 PQ-Fomel
  * A4.1 Tageszeit
  * A4.1 Schaltjahr
@@ -149,6 +150,7 @@ class Fahrkartenautomat {
 		double rueckgabebetrag;
 		
 		rueckgabebetrag = eingezahlterGesamtbetrag - zuZahlenderBetrag;
+		rueckgabebetrag = Math.ceil(rueckgabebetrag * 100) / 100; 
 		if (rueckgabebetrag > 0.0) {
 			System.out.printf("Der Rückgabebetrag in Höhe von %.2f Euro\n", rueckgabebetrag);
 			System.out.println("wird in folgenden Münzen ausgezahlt:");
@@ -177,7 +179,7 @@ class Fahrkartenautomat {
 			System.out.println(muenze);
 			rueckgabeWert = rueckgabeWert - muenzWert;
 		}
-		return rueckgabeWert;
+		return Math.ceil(rueckgabeWert * 100) / 100;
 	}
 }
 
