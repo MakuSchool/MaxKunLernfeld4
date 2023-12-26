@@ -18,6 +18,7 @@ import java.util.Scanner;
  * A5.5: Fahrkarten kombinieren
  * A6.3: Methoden
  * A6.4: Zusatzschleife
+ * A7.4: Fahrkartenarray 
  */
 
 class Fahrkartenautomat {
@@ -61,20 +62,26 @@ class Fahrkartenautomat {
 		int anzahlTickets;
 		double zwischenBetrag = 0;
 		
+		String[] ticketNamen = {"Einzelfahrschein AB","Einzelfahrschein BC","Einzelfahrschein ABC","Kurzstrecke AB","Tageskarte AB","Tageskarte BC","Tageskarte ABC","4-Fahrten-Karte AB","4-Fahrten-Karte BC","4-Fahrten-Karte ABC","Kleingruppen-Tageskarte AB","Kleingruppen-Tageskarte BC","Kleingruppen-Tageskarte ABC"};
+		double[] ticketPreise = {3.0, 3.5, 3.8, 2.0, 8.6, 9.2, 10.0, 9.4, 12.6, 13.8, 25.5, 26.0, 26.5}; 
+		
 		while(true) {
 			
 			System.out.print("Fahrkartenbestellvorgang:\r\n"
-					+ "=========================\n\n" + "Wählen Sie ihre Wunschfahrkarte für Berlin AB aus:\r\n"
-							+ "  Kurzstrecke AB [2,00 EUR] (1)\r\n"
-							+ "  Einzelfahrschein AB [3,00 EUR] (2)\r\n"
-							+ "  Tageskarte AB [8,80 EUR] (3)\r\n"
-							+ "  4-Fahrten-Karte AB [9,40 EUR] (4)\n"
-							+ "  Bezahlen (5)\n");
+					+ "=========================\n\n");
+			for(int i = 0; i < ticketNamen.length; i++) {
+				System.out.printf("%s [%.2f €] (%d)\n", ticketNamen[i], ticketPreise[i], (i+1));
+			}
+			System.out.print("Bezahlen (14)\n");
 			
 			System.out.print("Ihre Wahl:");
 			auswahl = tastatur.nextInt();
 			
-			while(auswahl <= 0 || auswahl > 5) {
+			if(auswahl == 14) {
+				return zuZahlenderBetrag;
+			}
+			
+			while(auswahl <= 0 || auswahl > 14) {
 				System.out.println(">>falsche Eingabe<<");
 				System.out.print("Ihre Wahl:");
 				auswahl = tastatur.nextInt();
@@ -82,19 +89,6 @@ class Fahrkartenautomat {
 			
 			zwischenBetrag = 0;
 		
-			switch(auswahl) {
-				case 1: zwischenBetrag = 2.00;
-				break;
-				case 2: zwischenBetrag = 3.00;
-				break;
-				case 3: zwischenBetrag = 8.80;
-				break;
-				case 4: zwischenBetrag = 9.40;
-				break;
-				case 5: return zuZahlenderBetrag;
-				default: System.out.println(">>falsche Eingabe<<");
-			}
-					
 			// Anzahl Tickets eingeben
 			// Testen auf korrekten Wert
 			System.out.print("Ticketanzahl: ");
@@ -107,7 +101,7 @@ class Fahrkartenautomat {
 			}
 					
 			// Ticketanzahl mal Ticketpreis
-			zwischenBetrag *= anzahlTickets;  
+			zwischenBetrag = ticketPreise[auswahl] * anzahlTickets;  
 			zuZahlenderBetrag += zwischenBetrag;
 			System.out.printf("Zwischensumme: %.2f Euro\n", zuZahlenderBetrag);
 		}
