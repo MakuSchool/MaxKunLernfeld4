@@ -12,6 +12,9 @@ import java.util.Scanner;
  * A4.2: Ticketgrenzen im Fahrkartenautomat implementieren
  * A4.3: Geldeingabe überprüfen
  * A5.1: Schleifen
+ * A5.3: Wiederholung der Eingabe der Ticketanzahl 
+ * A5.4: Fahrkartenauswahl 
+ * A5.5: Fahrkarten kombinieren
  * A6.3: Methoden
  * A6.4: Zusatzschleife
  */
@@ -52,31 +55,61 @@ class Fahrkartenautomat {
 	
 	public static double fahrkartenbestellungsErfassung(Scanner tastatur) {
 		
-		double zuZahlenderBetrag;
+		double zuZahlenderBetrag = 0;
+		int auswahl;
 		int anzahlTickets;
+		double zwischenBetrag = 0;
 		
-		System.out.print("Zu zahlender Betrag (Euro): ");
-		zuZahlenderBetrag = tastatur.nextDouble();
-				
-		if(zuZahlenderBetrag < 0){
-			System.out.println("Fehlerhafte Eingabe: Der Ticketpreis muss positiv sein!\nTicketprei wird auf 1€ gesetzt");
-			zuZahlenderBetrag = 1;
-		}
-				
-		// Anzahl Tickets eingeben
-		// Testen auf korrekten Wert
-		System.out.print("Ticketanzahl: ");
-		anzahlTickets = tastatur.nextInt();
-				
-		if(anzahlTickets <= 0 || anzahlTickets > 10){
-			System.out.println("Fehlerhafte Eingabe: Die anzahl Tickets ist negativ oder größer 10!\nTicketanzahl wird auf 1 gesetzt");
-			zuZahlenderBetrag = 1;
-		}
-				
-		// Ticketanzahl mal Ticketpreis
-		zuZahlenderBetrag *= anzahlTickets;  
+		while(true) {
+			
+			System.out.print("Fahrkartenbestellvorgang:\r\n"
+					+ "=========================\n\n" + "Wählen Sie ihre Wunschfahrkarte für Berlin AB aus:\r\n"
+							+ "  Kurzstrecke AB [2,00 EUR] (1)\r\n"
+							+ "  Einzelfahrschein AB [3,00 EUR] (2)\r\n"
+							+ "  Tageskarte AB [8,80 EUR] (3)\r\n"
+							+ "  4-Fahrten-Karte AB [9,40 EUR] (4)\n"
+							+ "  Bezahlen (5)\n");
+			
+			System.out.print("Ihre Wahl:");
+			auswahl = tastatur.nextInt();
+			
+			while(auswahl <= 0 || auswahl > 5) {
+				System.out.println(">>falsche Eingabe<<");
+				System.out.print("Ihre Wahl:");
+				auswahl = tastatur.nextInt();
+			}
+			
+			zwischenBetrag = 0;
 		
-		return zuZahlenderBetrag;
+			switch(auswahl) {
+				case 1: zwischenBetrag = 2.00;
+				break;
+				case 2: zwischenBetrag = 3.00;
+				break;
+				case 3: zwischenBetrag = 8.80;
+				break;
+				case 4: zwischenBetrag = 9.40;
+				break;
+				case 5: return zuZahlenderBetrag;
+				default: System.out.println(">>falsche Eingabe<<");
+			}
+					
+			// Anzahl Tickets eingeben
+			// Testen auf korrekten Wert
+			System.out.print("Ticketanzahl: ");
+			anzahlTickets = tastatur.nextInt();
+					
+			while(anzahlTickets <= 0 || anzahlTickets > 10) {
+				System.out.println("Fehlerhafte Eingabe: Die anzahl Tickets ist negativ oder größer 10!\n");
+				System.out.print("Ticketanzahl: ");
+				anzahlTickets = tastatur.nextInt();
+			}
+					
+			// Ticketanzahl mal Ticketpreis
+			zwischenBetrag *= anzahlTickets;  
+			zuZahlenderBetrag += zwischenBetrag;
+			System.out.printf("Zwischensumme: %.2f Euro\n", zuZahlenderBetrag);
+		}
 	}
 	
 	public static double fahrkartenBezahlen(Scanner tastatur, double zuZahlenderBetrag) {
